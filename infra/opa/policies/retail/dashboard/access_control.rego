@@ -4,7 +4,7 @@ import rego.v1
 
 import data.retail.retail_api.authentication
 
-# Dashboard roles and permissions    
+# Dashboard roles and permissions 
 dashboard_roles := {
 	"manager": ["view_all", "edit_all", "export_data", "admin_panel"],
 	"senior_representative": ["view_all", "edit_assigned", "export_data"],
