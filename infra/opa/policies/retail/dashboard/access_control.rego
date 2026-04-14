@@ -12,7 +12,7 @@ dashboard_roles := {
 	"analyst": ["view_all"],
 }
 
-# Allow dashboard access based on role
+# Allow dashboard access based on role  
 allow_dashboard_access if {
 	user_claims := authentication.authenticated_claims
 	user_claims.role in ["manager", "senior_representative", "representative"]
