@@ -1,0 +1,26 @@
+name: Deploy Policy Bundle
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [develop]
+    paths:
+      - 'policies/**'
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: dev  # GitHub protected environment (approval gates, env-specific secrets)
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: EnforceAuth/deploy-action@v1
+        with:
+          entity-id: ${{ secrets.EA_ENTITY_ID }}
+          api-url: ${{ vars.EA_API_URL }}
+          environment: dev  # Target EnforceAuth environment for bundle routing
+          wait-for-completion: true
